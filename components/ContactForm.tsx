@@ -10,6 +10,7 @@ export default function ContactForm() {
 
    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
+  const form = e.currentTarget;
   setSending(true);
 
   const formData = new FormData(e.currentTarget);
@@ -32,7 +33,8 @@ export default function ContactForm() {
 
   if (res.ok) {
     setSubmitted(true);
-    e.currentTarget.reset();
+    form.reset();
+
     return;
   }
 
