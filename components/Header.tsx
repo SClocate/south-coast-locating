@@ -13,28 +13,6 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
-          <a
-            href="#services"
-            className="text-sm font-medium text-slate-600 hover:text-blue-900 transition-colors"
-          >
-            Services
-          </a>
-          <a
-            href="#service-area"
-            className="text-sm font-medium text-slate-600 hover:text-blue-900 transition-colors"
-          >
-            Service Area
-          </a>
-          <a
-            href="#contact"
-            className="text-sm font-medium text-slate-600 hover:text-blue-900 transition-colors"
-          >
-            Contact
-          </a>
-        </nav>
-
         {/* CTA & Mobile Toggle */}
         <div className="flex items-center gap-4">
           {/* Email */}
