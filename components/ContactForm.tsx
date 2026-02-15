@@ -5,17 +5,41 @@ import { Send, CheckCircle } from 'lucide-react';
 
 export default function ContactForm() {
     const [submitted, setSubmitted] = useState(false);
+    const [sending, setSending] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        // Simulate form submission
-        const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData.entries());
-        console.log('Form Submitted:', data);
 
-        // Show success state
-        setSubmitted(true);
-    };
+   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setSending(true);
+
+  const formData = new FormData(e.currentTarget);
+
+  const payload = {
+    name: String(formData.get("name") || ""),
+    phone: String(formData.get("phone") || ""),
+    email: String(formData.get("email") || ""),
+    service: String(formData.get("service") || ""),
+    message: String(formData.get("message") || ""),
+  };
+
+  const res = await fetch("/api/quote", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  setSending(false);
+
+  if (res.ok) {
+    setSubmitted(true);
+    e.currentTarget.reset();
+    return;
+  }
+
+  const data = await res.json().catch(() => ({}));
+  alert(data?.error || "Could not send. Please try again.");
+};
+
 
     if (submitted) {
         return (
@@ -28,11 +52,14 @@ export default function ContactForm() {
                             Thanks for reaching out to South Coast Locating. We'll be in touch with a quote shortly.
                         </p>
                         <button
-                            onClick={() => setSubmitted(false)}
-                            className="text-orange-400 hover:text-orange-300 underline underline-offset-4"
-                        >
-                            Send another enquiry
-                        </button>
+                            type="submit"
+                            disabled={sending}
+                            className="w-full py-4 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+>
+                            <Send className="w-5 h-5" />
+                            {sending ? "Sending..." : "Request Quote"}
+                         </button>
+
                     </div>
                 </div>
             </section>
