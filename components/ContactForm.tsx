@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 
@@ -51,16 +52,15 @@ export default function ContactForm() {
                         <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6" />
                         <h2 className="text-3xl font-bold mb-4">Enquiry Received!</h2>
                         <p className="text-slate-300 text-lg mb-8">
-                            Thanks for reaching out to South Coast Locating. We'll be in touch with a quote shortly.
+                            Thanks! We'll be in touch with a quote shortly.
                         </p>
-                        <button
-                            type="submit"
-                            disabled={sending}
-                            className="w-full py-4 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+                       <Link
+                        href="/"
+                         className="w-full py-4 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 transition-all text-center block"
 >
-                            <Send className="w-5 h-5" />
-                            {sending ? "Sending..." : "Request Quote"}
-                         </button>
+                             Back to Home
+                        </Link>
+
 
                     </div>
                 </div>
@@ -92,7 +92,7 @@ export default function ContactForm() {
                             </div>
                             <div className="flex items-center gap-4 text-slate-300">
                                 <div className="w-12 h-1 bg-orange-500 rounded-full"></div>
-                                <p>Advanced GPR Equipment</p>
+                                <p>Advanced Locating Equipment</p>
                             </div>
                         </div>
                     </div>
@@ -162,6 +162,14 @@ export default function ContactForm() {
                                     className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none"
                                 ></textarea>
                             </div>
+
+                            <button
+                                type="submit"
+                                className="w-full py-4 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                            >
+                                <Send className="w-5 h-5" />
+                                Request Quote
+                            </button>
                         </form>
                     </div>
                 </div>
