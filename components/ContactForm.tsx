@@ -162,14 +162,6 @@ export default function ContactForm() {
                                     className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none"
                                 ></textarea>
                             </div>
-
-                            <button
-                                type="submit"
-                                className="w-full py-4 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 focus:ring-4 focus:ring-orange-200 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
-                            >
-                                <Send className="w-5 h-5" />
-                                Request Quote
-                            </button>
                         </form>
                     </div>
                 </div>
