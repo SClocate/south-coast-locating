@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import { Menu, Phone, Mail } from 'lucide-react';
 
@@ -7,19 +9,17 @@ export default function Header() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link
-  href="/"
-  onClick={(e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    window.history.pushState({}, "", "/");
-  }}
-  className="flex items-center gap-2"
->
-  <span className="text-xl font-bold text-blue-900 tracking-tight">
-    South Coast Locating
-  </span>
-</Link>
-
+          href="/"
+          onClick={(e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          window.history.pushState({}, "", "/");
+         }}
+          className="flex items-center gap-2">
+        <span className="text-xl font-bold text-blue-900 tracking-tight">
+            South Coast Locating
+        </span>
+        </Link>
 
         {/* CTA & Mobile Toggle */}
         <div className="flex items-center gap-4">
